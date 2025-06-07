@@ -1,0 +1,3 @@
+- Ajustar metodo de login 
+- Criar todos os services necessarios
+- Ajustar rotas
