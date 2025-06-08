@@ -1,3 +1,2 @@
-- Ajustar metodo de login 
-- Criar todos os services necessarios
-- Ajustar rotas
+- Verificar metodo de login
+- Verificar por que parece que o back ta desconectando do banco
