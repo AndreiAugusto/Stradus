@@ -22,6 +22,12 @@ export default function LoginPage() {
     
     await login(formData);
   };
+  
+  const handleSubmitConvidado = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+        
+    await login({email: 'teste@stradus.com.br', password: 'teste'});
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -141,6 +147,22 @@ export default function LoginPage() {
                 </div>
               ) : (
                 'Entrar'
+              )}
+            </button>
+            {/* Botão de Login como Convidado */}
+            <button
+              type="button"
+              onClick={handleSubmitConvidado}
+              disabled={loading}
+              className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white py-3 px-4 rounded-lg font-semibold hover:from-blue-600 hover:to-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-transparent disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 transform hover:scale-105 active:scale-95"
+            >
+              {loading ? (
+                <div className="flex items-center justify-center">
+                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                  Entrando...
+                </div>
+              ) : (
+                'Entrar como Convidado'
               )}
             </button>
           </div>

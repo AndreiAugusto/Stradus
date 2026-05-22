@@ -40,7 +40,7 @@ export function AuthContextProvider({ children }: { children: React.ReactNode })
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-  const apiUrl = 'https://back-caminhao.vercel.app'
+  const apiUrl = 'https://caminhao-api.vercel.app'
 
 
   // Função de login
@@ -48,9 +48,9 @@ export function AuthContextProvider({ children }: { children: React.ReactNode })
     try {
       setLoading(true);
       
-      const response = await api.post(`${apiUrl}/auth/login`, data);
+      const response = await api.post(`${apiUrl}/usuario/login`, data);
 
-      if (response.status !== 200) {
+      if (!response.data.accessToken) {
         const errorData = response.data;
         throw new Error(errorData.error || 'Erro no login');
       }
@@ -59,6 +59,7 @@ export function AuthContextProvider({ children }: { children: React.ReactNode })
 
       // Salvar token no localStorage (no Next.js funciona no client-side)
       localStorage.setItem('token', result.accessToken);
+      document.cookie = `token=${result.accessToken}; path=/; max-age=3600`
       
       // Definir usuário
       setUser(result.user);
@@ -96,7 +97,7 @@ export function AuthContextProvider({ children }: { children: React.ReactNode })
       
       localStorage.setItem('token', result.accessToken);
       setUser(result.user);
-      
+
       router.push('/dashboard');
       
       toast.success('Usuário criado com sucesso!');
