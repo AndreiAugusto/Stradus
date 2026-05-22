@@ -10,7 +10,7 @@ export default function LoginPage() {
     email: '',
     password: ''
   });
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
   const { login, loading } = useAuth();
 
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {

@@ -1,4 +1,4 @@
-const API_BASE_URL = 'https://caminhao-api.vercel.app/';
+// const API_BASE_URL = 'https://caminhao-api.vercel.app/';
 import { api } from './api';
 
 export const dashboardService = {
